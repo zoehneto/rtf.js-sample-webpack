@@ -19,7 +19,12 @@ function loadDataFileReader(file){
         const meta = doc.metadata();
         doc.render().then(function(htmlElements) {
             console.log(meta);
-            console.log(htmlElements);
+
+            var mainElement = document.createElement('div');
+            htmlElements.forEach(function(htmlElement){
+                mainElement.append(htmlElement[0]);
+            });
+            console.log(mainElement.innerHTML);
         }).catch(error => console.error(error))
     };
     reader.readAsText(file);
